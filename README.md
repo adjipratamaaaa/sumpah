@@ -1,2 +1,1 @@
-# sumpah
-jingan
+# kamu

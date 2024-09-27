@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tombol Putar Video</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      #videoContainer {
+        display: none;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tambahkan di dalam body -->
+    <div id="hearts" class="hearts-container"></div>
+
+    <h1>NIH BUAT KAMU</h1>
+    <button onclick="tampilkanDanPutarVideo()">BUKAAAA</button>
+
+    <div id="videoContainer">
+      <video id="myVideo" width="600" controls>
+        <source src="stres.mp4" type="video/mp4" />
+        Browser Anda tidak mendukung video tag.
+      </video>
+    </div>
+
+    <script>
+      function tampilkanDanPutarVideo() {
+        var videoContainer = document.getElementById("videoContainer");
+        var video = document.getElementById("myVideo");
+
+        // Menampilkan video
+        videoContainer.style.display = "block";
+
+        // Memutar video
+        video.play();
+      }
+      function tampilkanDanPutarVideo() {
+        var videoContainer = document.getElementById("videoContainer");
+        var video = document.getElementById("myVideo");
+
+        // Menampilkan video
+        videoContainer.style.display = "block";
+
+        // Memutar video
+        video.play();
+
+        // Animasi hati yang muncul
+        createHearts();
+      }
+
+      function createHearts() {
+        const heartsContainer = document.getElementById("hearts");
+        for (let i = 0; i < 10; i++) {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.style.left = `${Math.random() * 100}vw`;
+          heart.style.animationDuration = `${Math.random() * 2 + 1}s`;
+          heartsContainer.appendChild(heart);
+
+          // Hapus hati setelah animasi selesai
+          setTimeout(() => {
+            heart.remove();
+          }, 3000);
+        }
+      }
+      function createConfetti() {
+        const confettiContainer = document.createElement("div");
+        confettiContainer.className = "confetti-container";
+        document.body.appendChild(confettiContainer);
+
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = `${Math.random() * 100}vw`;
+          confetti.style.backgroundColor = getRandomColor();
+          confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+          confettiContainer.appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 4000); // Hapus confetti setelah animasi selesai
+        }
+      }
+
+      function getRandomColor() {
+        const colors = ["#f3c623", "#ff5959", "#42d1f5", "#ff69b4", "#66ff66"];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      document
+        .querySelector("button")
+        .addEventListener("click", createConfetti);
+    </script>
+  </body>
+</html>
